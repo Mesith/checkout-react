@@ -2,7 +2,7 @@ import React from "react"
 
 const HeaderNavBar = () => {
   return (
-    <nav className="bg-gray-200 border-gray-200 dark:bg-gray-900">
+    <nav className="fixed top-0 left-0 w-full bg-gray-200 border-gray-200 dark:bg-gray-900">
       <div className="flex flex-wrap items-center justify-between  p-4">
         <a href="/" className="flex items-center space-x-3 rtl:space-x-reverse">
           <img

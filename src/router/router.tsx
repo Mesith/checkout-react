@@ -14,7 +14,7 @@ export const router = createBrowserRouter([
     children: [
       { path: "welcome", element: <Welcome /> },
       { path: "child-grade", element: <ChildGrade /> },
-      { path: "package", element: <Packages /> },
+      { path: "packages", element: <Packages /> },
       { path: "payment", element: <Payment /> },
     ],
   },
