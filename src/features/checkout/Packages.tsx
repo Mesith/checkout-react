@@ -15,7 +15,7 @@ const Packages = () => {
         }}
         onNextPress={() => {
           console.log("Next")
-          navigate("/packages")
+          navigate("/payment")
         }}
       />
     </div>
