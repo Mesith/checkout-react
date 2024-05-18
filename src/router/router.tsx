@@ -3,26 +3,18 @@ import Welcome from "../features/checkout/Welcome"
 import ChildGrade from "../features/checkout/ChildGrade"
 import Packages from "../features/checkout/Packages"
 import Payment from "../features/checkout/Payment"
+import Home from "../features/home/Home"
 
 export const router = createBrowserRouter([
+  { path: "/", element: <Home /> },
   {
-    path: "/",
-    element: <div>Hello world!</div>,
-  },
-  {
-    path: "/welcome",
-    element: <Welcome />,
-  },
-  {
-    path: "/child-grade",
-    element: <ChildGrade />,
-  },
-  {
-    path: "/packages",
-    element: <Packages />,
-  },
-  {
-    path: "/payment",
-    element: <Payment />,
+    path: "/", // Use the same root path for nested routes
+    element: <Home />,
+    children: [
+      { path: "welcome", element: <Welcome /> },
+      { path: "child-grade", element: <ChildGrade /> },
+      { path: "package", element: <Packages /> },
+      { path: "payment", element: <Payment /> },
+    ],
   },
 ])
