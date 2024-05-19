@@ -1,4 +1,3 @@
-import React from "react"
 import { PackageItem } from "./PackageItem"
 
 export interface PackageInputOptionItem {

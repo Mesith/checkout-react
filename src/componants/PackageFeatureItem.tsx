@@ -1,5 +1,3 @@
-import React from "react"
-
 export const PackageFeatureItem = ({ feature }: { feature: string }) => {
   return (
     <li className="flex items-center space-x-3">

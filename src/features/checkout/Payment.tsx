@@ -1,5 +1,3 @@
-import React from "react"
-
 const Payment = () => {
   return (
     <section className="bg-white mt-20 dark:bg-gray-900">

@@ -1,4 +1,3 @@
-import React from "react"
 import { PackageFeatureItem } from "./PackageFeatureItem"
 
 export const PackageFeatureList = ({ features }: { features: string[] }) => {

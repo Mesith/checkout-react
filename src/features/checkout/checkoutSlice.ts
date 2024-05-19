@@ -1,6 +1,6 @@
 import type { PayloadAction } from "@reduxjs/toolkit"
 import { createAppSlice } from "../../app/createAppSlice"
-import fields, { fields } from "../../data/form"
+import { fields } from "../../data/form"
 
 export interface CheckoutSliceState {
   value: number

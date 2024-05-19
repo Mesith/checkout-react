@@ -1,4 +1,3 @@
-import React from "react"
 import { PackageFeatureList } from "./PackageFeatureList"
 
 export type PackageItemType = {

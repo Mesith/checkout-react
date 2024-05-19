@@ -1,5 +1,3 @@
-import React from "react"
-
 const HeaderNavBar = () => {
   return (
     <nav className="fixed top-0 left-0 w-full bg-gray-200 border-gray-200 dark:bg-gray-900">

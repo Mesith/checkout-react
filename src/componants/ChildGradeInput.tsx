@@ -1,4 +1,3 @@
-import React from "react"
 import GradeItem from "./GradeItem"
 
 export interface ChildGradeInputOptionItem {

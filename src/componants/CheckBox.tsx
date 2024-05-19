@@ -1,5 +1,4 @@
 import { Checkbox, Label } from "flowbite-react"
-import React from "react"
 
 const CheckBox = ({
   id,

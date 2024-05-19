@@ -1,7 +1,4 @@
-import type {
-  DynamicFeilds,
-  DynamicFieldData,
-} from "../componants/dynamicForm/DynamicControleTypes"
+import type { DynamicFeilds } from "../componants/dynamicForm/DynamicControleTypes"
 
 export const fields: DynamicFeilds = {
   welcomeFeilds: [

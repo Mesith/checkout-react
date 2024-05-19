@@ -1,6 +1,3 @@
-import React from "react"
-import { x } from "vitest/dist/reporters-yx5ZTtEV.js"
-
 const GradeItem = ({
   name,
   id,
