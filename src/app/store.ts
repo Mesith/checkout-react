@@ -8,6 +8,7 @@ import storage from "redux-persist/lib/storage"
 import { persistReducer, persistStore } from "redux-persist"
 import { checkoutSlice } from "../features/checkout/CheckoutSlice"
 
+
 const persistConfig = {
   key: "root",
   storage,

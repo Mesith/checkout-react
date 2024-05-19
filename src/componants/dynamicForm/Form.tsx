@@ -13,6 +13,7 @@ interface FormProps {
 export const Form = forwardRef(
   ({ fields, formValues, cacheUnSubmitValues }: FormProps, ref: any) => {
     const submitRef = useRef(null)
+    const cacheValueRef = useRef(null)
     const formMethods: any = useForm({ defaultValues: formValues })
     const {
       handleSubmit,
@@ -23,15 +24,30 @@ export const Form = forwardRef(
     } = formMethods
 
     const debounced = useDebouncedCallback(value => {
-      cacheUnSubmitValues(value)
+      cacheValueRef.current = value
     }, 1000)
-    console.log("Error", errors)
+
+    useEffect(() => {
+      window.onbeforeunload = function () {
+        if (cacheValueRef.current) {
+          cacheUnSubmitValues(cacheValueRef.current)
+        }
+        return true
+      }
+
+      return () => {
+        window.onbeforeunload = null
+      }
+    }, [])
+
     useEffect(() => {
       submitRef.current = handleSubmit((data: any) => {
-        console.log("Submitted data:", data)
+        console.log("Form Submit")
       })
       const subscription = watch((values: any) => debounced(values))
-      return () => subscription.unsubscribe()
+      return () => {
+        subscription.unsubscribe()
+      }
     }, [handleSubmit, cacheUnSubmitValues, watch, debounced])
 
     useImperativeHandle(ref, () => ({
@@ -48,7 +64,7 @@ export const Form = forwardRef(
       <form>
         <FormProvider {...formMethods}>
           {fields.map((d, i) => (
-            <div key={i}>
+            <div key={d.fieldName}>
               <DynamicControl
                 error={errors[d?.fieldName]}
                 control={control}

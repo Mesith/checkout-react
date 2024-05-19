@@ -3,8 +3,10 @@ import FooterNavitation from "../../componants/FooterNavitation"
 import { useNavigate } from "react-router-dom"
 import {
   cachePackageFormValue,
+  resetChache,
   selectFormFeilds,
   selectPackageFeildsValues,
+  setCurrenFormStep,
 } from "./CheckoutSlice"
 import { useAppDispatch, useAppSelector } from "../../app/hooks"
 import { Form } from "../../componants/dynamicForm/Form"
@@ -20,7 +22,7 @@ const Packages = () => {
     <section className="bg-white dark:bg-gray-900">
       <div className="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
         <div className="mx-auto max-w-screen-md text-center mb-8 lg:mb-12">
-          <h2 className="mb-2 mt-8 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">
+          <h2 className="mb-2 uppercase mt-8 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">
             How long do you need to access to Euka
           </h2>
         </div>
@@ -35,7 +37,7 @@ const Packages = () => {
         />
         <FooterNavitation
           onBackPress={() => {
-            console.log("Back")
+            dispatch(setCurrenFormStep("child-grade"))
             navigate("/child-grade")
           }}
           onNextPress={() => {
@@ -45,6 +47,7 @@ const Packages = () => {
               if (formRef.current.isValid()) {
                 const formData = formRef.current.getValues()
                 dispatch(cachePackageFormValue(formData))
+                dispatch(resetChache())
                 navigate("/payment")
               }
             }

@@ -9,6 +9,7 @@ export interface CheckoutSliceState {
   welcomeFormValues: any
   childGradeFormValues: any
   packageFormValues: any
+  currentFormStep: null | "welcome" | "child-grade" | "packages"
 }
 
 const initialState: CheckoutSliceState = {
@@ -18,6 +19,7 @@ const initialState: CheckoutSliceState = {
   welcomeFormValues: {},
   childGradeFormValues: {},
   packageFormValues: {},
+  currentFormStep: null,
 }
 
 // If you are not using async thunks you can use the standalone `createSlice`.
@@ -37,6 +39,14 @@ export const checkoutSlice = createAppSlice({
     decrement: create.reducer(state => {
       state.value -= 1
     }),
+    setCurrenFormStep: create.reducer(
+      (
+        state,
+        action: PayloadAction<null | "welcome" | "child-grade" | "packages">,
+      ) => {
+        state.currentFormStep = action.payload
+      },
+    ),
     cacheWelcomeFormValue: create.reducer(
       (state, action: PayloadAction<any>) => {
         state.welcomeFormValues = action.payload
@@ -52,6 +62,12 @@ export const checkoutSlice = createAppSlice({
         state.packageFormValues = action.payload
       },
     ),
+    resetChache: create.reducer((state, action: PayloadAction<void>) => {
+      state.welcomeFormValues = action.payload
+      state.childGradeFormValues = action.payload
+      state.packageFormValues = action.payload
+      state.currentFormStep = null
+    }),
     // Use the `PayloadAction` type to declare the contents of `action.payload`
     incrementByAmount: create.reducer(
       (state, action: PayloadAction<number>) => {
@@ -68,6 +84,7 @@ export const checkoutSlice = createAppSlice({
     selectWelcomeFeildsValues: checkout => checkout.welcomeFormValues,
     selectChildGradeFeildsValues: checkout => checkout.childGradeFormValues,
     selectPackageFeildsValues: checkout => checkout.packageFormValues,
+    selectCurrentFormStep: checkout => checkout.currentFormStep,
   },
 })
 
@@ -79,6 +96,8 @@ export const {
   cacheWelcomeFormValue,
   cacheChildGradeFormValue,
   cachePackageFormValue,
+  setCurrenFormStep,
+  resetChache,
 } = checkoutSlice.actions
 
 // Selectors returned by `slice.selectors` take the root state as their first argument.
@@ -89,4 +108,5 @@ export const {
   selectWelcomeFeildsValues,
   selectChildGradeFeildsValues,
   selectPackageFeildsValues,
+  selectCurrentFormStep,
 } = checkoutSlice.selectors

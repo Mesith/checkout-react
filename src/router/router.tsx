@@ -5,11 +5,19 @@ import Packages from "../features/checkout/Packages"
 import Payment from "../features/checkout/Payment"
 import Home from "../features/home/Home"
 import Main from "../features/home/Main"
+import FormStepLinkNavigator from "./FormStepLinkNavigator"
 
 export const router = createBrowserRouter([
-  { path: "/", element: <Main /> },
   {
-    path: "/", // Use the same root path for nested routes
+    path: "/",
+    element: (
+      <FormStepLinkNavigator>
+        <Main />
+      </FormStepLinkNavigator>
+    ),
+  },
+  {
+    path: "/",
     element: <Home />,
     children: [
       { path: "welcome", element: <Welcome /> },

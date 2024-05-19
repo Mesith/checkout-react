@@ -1,39 +1,42 @@
 import { TextInput } from "flowbite-react"
+import React from "react"
 
-const InputText = ({
-  label,
-  type,
-  onChange,
-  fieldName,
-  value,
-  ...rest
-}: {
-  label: string
-  type: string
-  onChange: (value: string) => void
-  fieldName: string
-  value: string
-  rest?: any
-}) => {
-  return (
-    <div>
-      <label
-        for={fieldName}
-        className="block mt-2 text-sm font-medium leading-6 text-gray-900"
-      >
-        {label}
-      </label>
-      <div className="mt-2">
-        <TextInput
-          id="small"
-          value={value}
-          type={type}
-          sizing="sm"
-          onChange={(e: any) => onChange(e.target.value)}
-          {...rest}
-        />
+const InputText = React.memo(
+  ({
+    label,
+    type,
+    onChange,
+    fieldName,
+    value,
+    ...rest
+  }: {
+    label: string
+    type: string
+    onChange: (value: string) => void
+    fieldName: string
+    value: string
+    rest?: any
+  }) => {
+    return (
+      <div>
+        <label
+          for={fieldName}
+          className="block mt-2 text-sm font-medium leading-6 text-gray-900"
+        >
+          {label}
+        </label>
+        <div className="mt-2">
+          <TextInput
+            id="small"
+            value={value}
+            type={type}
+            sizing="sm"
+            onChange={(e: any) => onChange(e.target.value)}
+            {...rest}
+          />
+        </div>
       </div>
-    </div>
-  )
-}
+    )
+  },
+)
 export default InputText

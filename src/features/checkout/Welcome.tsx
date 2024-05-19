@@ -5,8 +5,8 @@ import {
   cacheWelcomeFormValue,
   selectFormFeilds,
   selectWelcomeFeildsValues,
+  setCurrenFormStep,
 } from "./CheckoutSlice"
-
 import { Form } from "../../componants/dynamicForm/Form"
 import { useRef } from "react"
 
@@ -23,6 +23,7 @@ const Welcome = () => {
 
       if (formRef.current.isValid()) {
         const formData = formRef.current.getValues()
+        dispatch(setCurrenFormStep("child-grade"))
         dispatch(cacheWelcomeFormValue(formData))
         navigate("/child-grade", { state: { formData } })
       }
@@ -32,7 +33,7 @@ const Welcome = () => {
   return (
     <div>
       <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
-        <h2 className="mt-10 text-center text-4xl font-bold leading-9 tracking-tight text-gray-900">
+        <h2 className="mt-10 text-center uppercase text-4xl font-bold leading-9 tracking-tight text-gray-900">
           Welcome to the Euka Family
         </h2>
         <p className="mt-10 text-center text-sm text-gray-500">
