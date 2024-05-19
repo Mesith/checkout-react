@@ -50,6 +50,49 @@ export const fields: DynamicFeilds = {
       defaultValue: "",
     },
   ],
-  childGradeFeilds: [],
-  packageFeilds: [],
+  childGradeFeilds: [
+    {
+      fieldName: "childGrade",
+      inputType: "childgrade",
+      label: "",
+      defaultValue: "",
+      config: {
+        required: "Please Select Grade Level",
+      },
+      options: [
+        { id: "1", name: "test1", description: "test" },
+        { id: "2", name: "test1", description: "test" },
+        { id: "3", name: "test1", description: "test" },
+        { id: "4", name: "test4", description: "test" },
+      ],
+    },
+  ],
+  packageFeilds: [
+    {
+      fieldName: "package",
+      inputType: "package",
+      label: "",
+      defaultValue: "",
+      config: {
+        required: "Please Select Package",
+      },
+      options: [
+        {
+          id: "1",
+          name: "One Term",
+          priceTag: "676 AUD per annum",
+          durationTag: "3 months - 169 AUD",
+          features: ["test1", "test2 test3"],
+        },
+        //   { name: "package2", priceTag: "676 AUD per annum", durationTag: "12 months" },
+        {
+          id: "2",
+          name: "Full Year",
+          priceTag: "676 AUD per annum",
+          durationTag: "3 months - 169 AUD",
+          features: ["test1", "test2 test3", "test 4,", "tesd test features"],
+        },
+      ],
+    },
+  ],
 }

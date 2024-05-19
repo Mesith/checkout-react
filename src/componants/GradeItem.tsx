@@ -1,11 +1,27 @@
 import React from "react"
+import { x } from "vitest/dist/reporters-yx5ZTtEV.js"
 
-
-const GradeItem = ({ name }: { name: string }) => {
+const GradeItem = ({
+  name,
+  id,
+  onClick,
+  value,
+}: {
+  id: string
+  name: string
+  value: string
+  onClick: (val: string) => void
+}) => {
+  const selectedItemClass = id === value ? "border-2 border-yellow-300" : ""
   return (
-    <div>
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="mx-auto mt-16 max-w-2xl rounded-3xl ring-1 ring-gray-200 sm:mt-20 lg:mx-0 lg:flex lg:max-w-none">
+    <>
+      <div
+        className="mx-auto max-w-7xl px-6 lg:px-8 "
+        onClick={() => onClick(id)}
+      >
+        <div
+          className={`mx-auto ${selectedItemClass} mt-2 max-w-2xl rounded-3xl ring-1 ring-gray-200 sm:mt-12 lg:mx-0 lg:flex lg:max-w-none`}
+        >
           <div className="p-8 sm:p-10 lg:flex-auto">
             <h3 className="text-2xl font-bold tracking-tight text-gray-900">
               {name}
@@ -25,7 +41,7 @@ const GradeItem = ({ name }: { name: string }) => {
           </div>
         </div>
       </div>
-    </div>
+    </>
   )
 }
 

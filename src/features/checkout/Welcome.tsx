@@ -1,14 +1,20 @@
 import { Button } from "flowbite-react"
 import { useNavigate } from "react-router-dom"
-import { useAppSelector } from "../../app/hooks"
-import { selectFormFeilds } from "./checkoutSlice"
+import { useAppDispatch, useAppSelector } from "../../app/hooks"
+import {
+  cacheWelcomeFormValue,
+  selectFormFeilds,
+  selectWelcomeFeildsValues,
+} from "./CheckoutSlice"
 
 import { Form } from "../../componants/dynamicForm/Form"
 import { useRef } from "react"
 
 const Welcome = () => {
+  const dispatch = useAppDispatch()
   const formRef = useRef<any>(null)
   const formFeilds = useAppSelector(selectFormFeilds)
+  const wlcomeFeildsValues = useAppSelector(selectWelcomeFeildsValues)
   const navigate = useNavigate()
 
   const handleNextClick = () => {
@@ -17,6 +23,7 @@ const Welcome = () => {
 
       if (formRef.current.isValid()) {
         const formData = formRef.current.getValues()
+        dispatch(cacheWelcomeFormValue(formData))
         navigate("/child-grade", { state: { formData } })
       }
     }
@@ -36,13 +43,10 @@ const Welcome = () => {
             <Form
               ref={formRef}
               fields={formFeilds?.welcomeFeilds}
-              values={{
-                email: "rr@gmail.com",
-                age: "98",
-                language: "french",
-                keepMeForOffers: true,
-                address: "test address",
-              }}
+              formValues={wlcomeFeildsValues}
+              cacheUnSubmitValues={(formData: any) =>
+                dispatch(cacheWelcomeFormValue(formData))
+              }
             />
           </div>
 

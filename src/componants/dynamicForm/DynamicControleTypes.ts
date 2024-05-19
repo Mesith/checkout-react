@@ -1,6 +1,14 @@
 import type { RegisterOptions } from "react-hook-form"
+import type { ChildGradeInputOptionItem } from "../ChildGradeInput"
+import type { PackageInputOptionItem } from "../PackagesInput"
 
-export type ControlType = "text" | "select" | "number" | "checkbox"
+export type ControlType =
+  | "text"
+  | "select"
+  | "number"
+  | "checkbox"
+  | "childgrade"
+  | "package"
 
 export interface SelectOption {
   label: string
@@ -12,7 +20,10 @@ export interface DynamicFieldData {
   inputType: ControlType
   fieldName: string
   defaultValue: any
-  options?: SelectOption[]
+  options?:
+    | SelectOption[]
+    | ChildGradeInputOptionItem[]
+    | PackageInputOptionItem[]
   config?: RegisterOptions
   required?: boolean
   error?: { required: boolean; message: string }

@@ -7,6 +7,8 @@ export interface CheckoutSliceState {
   status: "idle" | "loading" | "failed"
   formFeilds: any
   welcomeFormValues: any
+  childGradeFormValues: any
+  packageFormValues: any
 }
 
 const initialState: CheckoutSliceState = {
@@ -14,6 +16,8 @@ const initialState: CheckoutSliceState = {
   status: "idle",
   formFeilds: fields,
   welcomeFormValues: {},
+  childGradeFormValues: {},
+  packageFormValues: {},
 }
 
 // If you are not using async thunks you can use the standalone `createSlice`.
@@ -38,6 +42,16 @@ export const checkoutSlice = createAppSlice({
         state.welcomeFormValues = action.payload
       },
     ),
+    cacheChildGradeFormValue: create.reducer(
+      (state, action: PayloadAction<any>) => {
+        state.childGradeFormValues = action.payload
+      },
+    ),
+    cachePackageFormValue: create.reducer(
+      (state, action: PayloadAction<any>) => {
+        state.packageFormValues = action.payload
+      },
+    ),
     // Use the `PayloadAction` type to declare the contents of `action.payload`
     incrementByAmount: create.reducer(
       (state, action: PayloadAction<number>) => {
@@ -51,6 +65,9 @@ export const checkoutSlice = createAppSlice({
     selectCount: checkout => checkout.value,
     selectStatus: checkout => checkout.status,
     selectFormFeilds: checkout => checkout.formFeilds,
+    selectWelcomeFeildsValues: checkout => checkout.welcomeFormValues,
+    selectChildGradeFeildsValues: checkout => checkout.childGradeFormValues,
+    selectPackageFeildsValues: checkout => checkout.packageFormValues,
   },
 })
 
@@ -60,8 +77,16 @@ export const {
   increment,
   incrementByAmount,
   cacheWelcomeFormValue,
+  cacheChildGradeFormValue,
+  cachePackageFormValue,
 } = checkoutSlice.actions
 
 // Selectors returned by `slice.selectors` take the root state as their first argument.
-export const { selectCount, selectStatus, selectFormFeilds } =
-  checkoutSlice.selectors
+export const {
+  selectCount,
+  selectStatus,
+  selectFormFeilds,
+  selectWelcomeFeildsValues,
+  selectChildGradeFeildsValues,
+  selectPackageFeildsValues,
+} = checkoutSlice.selectors
