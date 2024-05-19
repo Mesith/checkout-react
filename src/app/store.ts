@@ -6,6 +6,7 @@ import { counterSlice } from "../features/counter/counterSlice"
 import { quotesApiSlice } from "../features/quotes/quotesApiSlice"
 import storage from "redux-persist/lib/storage"
 import { persistReducer, persistStore } from "redux-persist"
+import { checkoutSlice } from "../features/checkout/checkoutSlice"
 
 const persistConfig = {
   key: "root",
@@ -14,7 +15,7 @@ const persistConfig = {
 
 // `combineSlices` automatically combines the reducers using
 // their `reducerPath`s, therefore we no longer need to call `combineReducers`.
-const rootReducer = combineSlices(counterSlice, quotesApiSlice)
+const rootReducer = combineSlices(counterSlice, quotesApiSlice, checkoutSlice)
 
 const persistedReducer = persistReducer(persistConfig, rootReducer) as any
 // Infer the `RootState` type from the root reducer
