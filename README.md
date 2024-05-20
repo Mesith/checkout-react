@@ -65,3 +65,17 @@ npm run test
 ```
 
 This command will trigger the test runner, which will run all the unit tests in the "test" folder. The test runner will provide feedback on the test results, including the number of tests passed and any failures or errors encountered during testing.
+
+
+## A/B Testing
+This section empowers you to tailor the multi-step form's structure using a JSON file located within the `src/data` directory. By editing, adding, or removing form fields in this JSON definition, you can precisely control the information collected on the form.
+
+Understanding the Data Structure
+
+The fields object within the JSON file serves as the foundation for your form's layout. It's comprised of three primary sections, each catering to a distinct stage of the form:
+
+**`welcomeFeilds`** (array): An array of field objects that determine the elements displayed in the welcome section. This is typically where you'd collect general user information.
+
+**`childGradeFeilds`** (array): An array of field objects that dictate the elements displayed in the child grade section. This section likely focuses on gathering details about a child's educational level.
+
+**`packageFeilds`** (array): An array of field objects that define the elements displayed in the package selection section. Here, users would typically choose a subscription plan.
