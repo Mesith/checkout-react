@@ -1,3 +1,4 @@
+import { describe, beforeEach, it, expect } from "vitest"
 import type { AppStore } from "../../app/store"
 import { makeStore, store } from "../../app/store"
 import { fields } from "../../data/form"
@@ -47,13 +48,13 @@ describe<LocalTestContext>("checkout reducer", () => {
     )
   })
 
-  it("should have initial form fields", ({ store }) => {
+  it("should have initial form fields", ({ store }: any) => {
     expect(selectFormFeilds(store.getState())).toBe(fields)
   })
 
   // Form Value Caching Tests
-  it("should cache welcome form values", ({ store }) => {
-    const testValues = {
+  it("should cache welcome form values", ({ store }: any) => {
+    const testValues: any = {
       email: "john.doe@example.com",
       age: 27,
       keepMeForOffers: true,
@@ -62,31 +63,30 @@ describe<LocalTestContext>("checkout reducer", () => {
     expect(selectWelcomeFeildsValues(store.getState())).toBe(testValues)
   })
 
-  it("should cache child grade form values", ({ store }) => {
-    const testValues = { childGrade: "1" }
+  it("should cache child grade form values", ({ store }: any) => {
+    const testValues: any = { childGrade: "1" }
     store.dispatch(cacheChildGradeFormValue(testValues))
     expect(selectChildGradeFeildsValues(store.getState())).toBe(testValues)
   })
 
-  it("should cache package form values", ({ store }) => {
-    const testValues = { package: "2" }
+  it("should cache package form values", ({ store }: any) => {
+    const testValues: any = { package: "2" }
     store.dispatch(cachePackageFormValue(testValues))
     expect(selectPackageFeildsValues(store.getState())).toBe(testValues)
   })
 
-
-  it("should set current form step", ({ store }) => {
+  it("should set current form step", ({ store }: any) => {
     store.dispatch(setCurrenFormStep("child-grade"))
     expect(selectCurrentFormStep(store.getState())).toBe("child-grade")
   })
 
-  it("should reset all cached form values and step", ({ store }) => {
+  it("should reset all cached form values and step", ({ store }: any) => {
     const initialValues = { email: "mesith@gmail.com", age: 36 }
 
-    store.dispatch(cacheWelcomeFormValue(initialValues))
+    store.dispatch(cacheWelcomeFormValue(initialValues as any))
     store.dispatch(setCurrenFormStep("child-grade"))
-    store.dispatch(cacheChildGradeFormValue({ childGrade: "1" }))
-    store.dispatch(cachePackageFormValue({ package: "2" }))
+    store.dispatch(cacheChildGradeFormValue({ childGrade: "1" } as any))
+    store.dispatch(cachePackageFormValue({ package: "2" } as any))
 
     store.dispatch(resetChache())
 

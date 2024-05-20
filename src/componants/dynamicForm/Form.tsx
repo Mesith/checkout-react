@@ -4,6 +4,9 @@ import { DynamicControl } from "./DynamicControl"
 import { forwardRef, useEffect, useImperativeHandle, useRef } from "react"
 import { useDebouncedCallback } from "use-debounce"
 
+// Enables creation of forms with adaptable structures
+// based on provided data, offering flexibility and data collection
+// customization.
 interface FormProps {
   fields: DynamicFieldData[]
   formValues: any
@@ -12,7 +15,7 @@ interface FormProps {
 
 export const Form = forwardRef(
   ({ fields, formValues, cacheUnSubmitValues }: FormProps, ref: any) => {
-    const submitRef = useRef(null)
+    const submitRef: any = useRef(null)
     const cacheValueRef = useRef(null)
     const formMethods: any = useForm({ defaultValues: formValues })
     const {

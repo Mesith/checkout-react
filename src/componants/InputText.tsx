@@ -21,7 +21,6 @@ const InputText = React.memo(
       <div>
         <label
           aria-label={label}
-          for={fieldName}
           className="block mt-2 text-sm font-medium leading-6 text-gray-900"
         >
           {label}

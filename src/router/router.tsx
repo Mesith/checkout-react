@@ -16,8 +16,9 @@ export const router = createBrowserRouter([
       </FormStepLinkNavigator>
     ),
   },
+  // This route defines a nested path structure starting with anything
+  // other than the root path (`/`)
   {
-    path: "/",
     element: <Home />,
     children: [
       { path: "welcome", element: <Welcome /> },
