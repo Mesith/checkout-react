@@ -52,7 +52,8 @@ Launch the app on an `http://localhost:5173`
 - UI Framework: **React 18.2** (https://react.dev/) - for building dynamic and interactive user interfaces.
 - Responsive Design: **Tailwind CSS** (https://tailwindcss.com/) - for rapid and utility-first CSS development.
 - Unit Testing: **Vitest** (https://vitest.dev/) with React Testing Library (https://testing-library.com/docs/react-testing-library/intro/) - for ensuring code quality and maintainability.
-- Routing: React Router DOM (https://reacttraining.com/react-router) - for smooth navigation between different parts of your application.
+- Routing: **React Router DOM** (https://reacttraining.com/react-router) - for smooth navigation between different parts of your application.
+- Dynamic Forms: **React-Hook-Forms** 
 ## Unit Tests
 The project includes a comprehensive set of unit tests, covering various aspects of the codebase. These tests can be found in the `__test__` folder under some packages, which includes unit tests.
 
