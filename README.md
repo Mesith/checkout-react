@@ -19,6 +19,10 @@ Empower your marketing team to tailor each checkout step according to your brand
 
 
 
+https://github.com/Mesith/checkout-react/assets/5463037/76586b8d-22fb-488f-91b8-f5d2caf902d4
+
+
+
 ## Installation Guide:
 
 #### 2. Installation:
