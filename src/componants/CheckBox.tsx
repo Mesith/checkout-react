@@ -18,7 +18,9 @@ const CheckBox = React.memo(
         <Checkbox
           id={id}
           checked={value}
-          onChange={(e: any) => onChange(e.target.value)}
+          onChange={(e: any) => {
+            onChange(e.target.checked)
+          }}
         />
         <Label value={label} htmlFor={id}>
           {label}

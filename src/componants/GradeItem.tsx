@@ -17,8 +17,10 @@ const GradeItem = React.memo(
         <div
           className="mx-auto max-w-7xl px-6 lg:px-8 "
           onClick={() => onClick(id)}
+          data-testid={`grade-item`}
         >
           <div
+            data-testid={id}
             className={`mx-auto ${selectedItemClass} mt-2 max-w-2xl rounded-3xl ring-1 ring-gray-200 sm:mt-12 lg:mx-0 lg:flex lg:max-w-none`}
           >
             <div className="p-8 sm:p-10 lg:flex-auto">

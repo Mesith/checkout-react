@@ -7,7 +7,7 @@ export type PackageItemType = {
   priceTag: string
   durationTag: string
   features: string[]
-  onClick?: (val: string) => void
+  onClick: (val: string) => void
   selectedItemClass: string
 }
 
@@ -23,8 +23,9 @@ export const PackageItem = React.memo(
   }: PackageItemType) => {
     return (
       <div
+        data-testid={"package-item"}
         onClick={() => {
-          if (onClick) onClick(id)
+          onClick(id)
         }}
         className={`flex ${selectedItemClass} flex-col p-6 mx-auto max-w-lg text-center
          text-gray-900 bg-white rounded-lg border border-gray-100 shadow dark:border-gray-600 xl:p-8
