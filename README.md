@@ -17,6 +17,8 @@ Empower your marketing team to tailor each checkout step according to your brand
 
 - User Data Persistence: User data is securely stored and automatically retrieved when they return to the checkout process, eliminating the need for repetitive input.
 
+
+
 ## Installation Guide:
 
 #### 2. Installation:
