@@ -117,6 +117,7 @@ export const DynamicControl = React.memo(
                   options={options as ChildGradeInputOptionItem[]}
                   onChange={onChange}
                   value={value}
+                  label={label}
                 />
               </>
             )}

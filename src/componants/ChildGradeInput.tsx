@@ -10,11 +10,12 @@ interface ChildGradeInputProps {
   options: ChildGradeInputOptionItem[]
   onChange: (value: string) => void
   value: string
+  label: string
 }
 const ChildGradeInput = React.memo(
-  ({ options, onChange, value }: ChildGradeInputProps) => {
+  ({ options, onChange, value, label }: ChildGradeInputProps) => {
     return (
-      <>
+      <div aria-label={label}>
         {options?.map((item: ChildGradeInputOptionItem) => {
           return (
             <GradeItem
@@ -28,7 +29,7 @@ const ChildGradeInput = React.memo(
             />
           )
         })}
-      </>
+      </div>
     )
   },
 )

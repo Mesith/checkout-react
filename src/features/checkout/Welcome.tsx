@@ -2,10 +2,10 @@ import { Button } from "flowbite-react"
 import { useNavigate } from "react-router-dom"
 import { useAppDispatch, useAppSelector } from "../../app/hooks"
 import {
-  cacheWelcomeFormValue,
   selectFormFeilds,
   selectWelcomeFeildsValues,
   setCurrenFormStep,
+  cacheWelcomeFormValue,
 } from "./CheckoutSlice"
 import { Form } from "../../componants/dynamicForm/Form"
 import { useRef } from "react"
@@ -17,16 +17,24 @@ const Welcome = () => {
   const wlcomeFeildsValues = useAppSelector(selectWelcomeFeildsValues)
   const navigate = useNavigate()
 
-  const handleNextClick = () => {
-    if (formRef.current && formRef.current.getValues) {
-      formRef.current.submit()
+  const handleNextClick = (formRef: any) => {
+    if (
+      !formRef ||
+      !formRef.current ||
+      !formRef.current.getValues ||
+      !formRef.current.isValid
+    ) {
+      return
+    }
 
-      if (formRef.current.isValid()) {
-        const formData = formRef.current.getValues()
-        dispatch(setCurrenFormStep("child-grade"))
-        dispatch(cacheWelcomeFormValue(formData))
-        navigate("/child-grade", { state: { formData } })
-      }
+    formRef.current.submit()
+
+    if (formRef.current.isValid()) {
+      const formData = formRef.current.getValues()
+      dispatch(setCurrenFormStep("child-grade"))
+      dispatch(cacheWelcomeFormValue(formData))
+      navigate("/child-grade", { state: { formData } })
+      console.log("test")
     }
   }
 
@@ -53,7 +61,7 @@ const Welcome = () => {
 
           <div className="space-y-6">
             <Button
-              onClick={handleNextClick}
+              onClick={() => handleNextClick(formRef)}
               color="blue"
               className="flex w-full justify-center rounded-md bg-gray-900 px-3 py-1 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-gray-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
             >

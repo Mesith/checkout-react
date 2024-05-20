@@ -20,7 +20,9 @@ const CheckBox = React.memo(
           checked={value}
           onChange={(e: any) => onChange(e.target.value)}
         />
-        <Label htmlFor={id}>{label}</Label>
+        <Label value={label} htmlFor={id}>
+          {label}
+        </Label>
       </div>
     )
   },

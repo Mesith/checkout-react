@@ -51,7 +51,7 @@ export const fields: DynamicFeilds = {
     {
       fieldName: "childGrade",
       inputType: "childgrade",
-      label: "",
+      label: "Child Grade",
       defaultValue: "",
       config: {
         required: "Please Select Grade Level",

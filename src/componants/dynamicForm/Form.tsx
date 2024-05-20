@@ -61,7 +61,7 @@ export const Form = forwardRef(
     }))
 
     return (
-      <form>
+      <form data-testid="dynamic-form">
         <FormProvider {...formMethods}>
           {fields.map((d, i) => (
             <div key={d.fieldName}>
