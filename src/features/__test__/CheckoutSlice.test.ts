@@ -1,7 +1,7 @@
 import type { AppStore } from "../../app/store"
 import { makeStore, store } from "../../app/store"
 import { fields } from "../../data/form"
-import type { CheckoutSliceState } from "./CheckoutSlice"
+import type { CheckoutSliceState } from "../checkout/CheckoutSlice"
 import {
   checkoutSlice,
   cacheWelcomeFormValue,
@@ -14,7 +14,7 @@ import {
   selectPackageFeildsValues,
   selectWelcomeFeildsValues,
   setCurrenFormStep,
-} from "./CheckoutSlice"
+} from "../checkout/CheckoutSlice"
 
 interface LocalTestContext {
   store: AppStore
@@ -23,7 +23,7 @@ interface LocalTestContext {
 describe<LocalTestContext>("checkout reducer", () => {
   beforeEach<LocalTestContext>(context => {
     const initialState: CheckoutSliceState = {
-      formFeilds: fields, // Assuming 'fields' is imported from data/form
+      formFeilds: fields,
       welcomeFormValues: {},
       childGradeFormValues: {},
       packageFormValues: {},
@@ -74,7 +74,7 @@ describe<LocalTestContext>("checkout reducer", () => {
     expect(selectPackageFeildsValues(store.getState())).toBe(testValues)
   })
 
-  // Current Form Step Tests
+
   it("should set current form step", ({ store }) => {
     store.dispatch(setCurrenFormStep("child-grade"))
     expect(selectCurrentFormStep(store.getState())).toBe("child-grade")

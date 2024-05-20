@@ -24,6 +24,8 @@ const ChildGrade = () => {
 
   const handleBackPress = () => {
     dispatch(setCurrenFormStep("welcome"))
+    const formData = formRef.current.getValues()
+    dispatch(cacheChildGradeFormValue(formData))
     navigate("/welcome")
   }
 
