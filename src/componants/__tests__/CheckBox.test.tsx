@@ -1,5 +1,5 @@
 import { render, fireEvent } from "@testing-library/react"
-import CheckBox from "../CheckBox" // Replace with the path to your CheckBox component
+import CheckBox from "../CheckBox"
 import { vi } from "vitest"
 
 describe("CheckBox component", () => {

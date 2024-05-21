@@ -27,10 +27,13 @@ export const Form = forwardRef(
     } = formMethods
 
     const debounced = useDebouncedCallback(value => {
+      //cached form values to ref avoid unnessary rerenders
+      // cached every changes to handle user leave the page without clicking submit button
       cacheValueRef.current = value
     }, 1000)
 
     useEffect(() => {
+      //defined onbeforeunload listener to cache the value when user accidently close the browser
       window.onbeforeunload = function () {
         if (cacheValueRef.current) {
           cacheUnSubmitValues(cacheValueRef.current)
@@ -47,6 +50,7 @@ export const Form = forwardRef(
       submitRef.current = handleSubmit((data: any) => {
         console.log("Form Submit")
       })
+      //initialize subscription to listen form value changes
       const subscription = watch((values: any) => debounced(values))
       return () => {
         subscription.unsubscribe()

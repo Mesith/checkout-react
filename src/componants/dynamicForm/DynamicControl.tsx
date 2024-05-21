@@ -42,7 +42,9 @@ export const DynamicControl = React.memo(
                     value={value}
                   />
                   {error?.message && (
-                    <span className="text-red-400 ">{error?.message}</span>
+                    <span aria-invalid={"true"} className="text-red-400 ">
+                      {error?.message}
+                    </span>
                   )}
                 </div>
               )}
@@ -66,7 +68,9 @@ export const DynamicControl = React.memo(
                   options={options as SelectOption[]}
                 />
                 {error?.message && (
-                  <span className="text-red-400 ">{error?.message}</span>
+                  <span aria-invalid={"true"} className="text-red-400 ">
+                    {error?.message}
+                  </span>
                 )}
               </div>
             )}
@@ -90,7 +94,9 @@ export const DynamicControl = React.memo(
                   value={value}
                 />
                 {error?.message && (
-                  <span className="text-red-400 ">{error?.message}</span>
+                  <span aria-invalid={"true"} className="text-red-400 ">
+                    {error?.message}
+                  </span>
                 )}
               </div>
             )}
@@ -108,7 +114,10 @@ export const DynamicControl = React.memo(
               <>
                 <div className="h-8 justify-center">
                   {error?.message && (
-                    <span className="flex text-red-400 justify-center">
+                    <span
+                      aria-invalid={"true"}
+                      className="flex text-red-400 justify-center"
+                    >
                       {error?.message}
                     </span>
                   )}
@@ -135,7 +144,10 @@ export const DynamicControl = React.memo(
               <>
                 <div className="h-8 justify-center">
                   {error?.message && (
-                    <span className="flex text-red-400 justify-center">
+                    <span
+                      aria-invalid={"true"}
+                      className="flex text-red-400 justify-center"
+                    >
                       {error?.message}
                     </span>
                   )}
