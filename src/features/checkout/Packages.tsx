@@ -38,7 +38,7 @@ const Packages = () => {
         <FooterNavitation
           onBackPress={() => {
             dispatch(setCurrenFormStep("child-grade"))
-            navigate("/child-grade")
+            navigate(-1)
           }}
           onNextPress={() => {
             if (formRef.current && formRef.current.getValues) {

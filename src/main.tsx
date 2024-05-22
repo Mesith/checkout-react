@@ -4,8 +4,8 @@ import { Provider } from "react-redux"
 import { persistor, store } from "./app/store"
 import "./index.css"
 import { PersistGate } from "redux-persist/integration/react"
-import { RouterProvider } from "react-router-dom"
 import { router } from "./router/router"
+import { RouterProvider } from "react-router-dom"
 
 const container = document.getElementById("root")
 

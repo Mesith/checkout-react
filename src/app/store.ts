@@ -2,7 +2,16 @@ import type { Action, ThunkAction } from "@reduxjs/toolkit"
 import { combineSlices, configureStore } from "@reduxjs/toolkit"
 import { setupListeners } from "@reduxjs/toolkit/query"
 //import storage from "redux-persist/lib/storage"
-import { persistReducer, persistStore } from "redux-persist"
+import {
+  FLUSH,
+  PAUSE,
+  PERSIST,
+  persistReducer,
+  persistStore,
+  PURGE,
+  REGISTER,
+  REHYDRATE,
+} from "redux-persist"
 import { checkoutSlice } from "../features/checkout/CheckoutSlice"
 import * as localForage from "localforage"
 
@@ -26,9 +35,13 @@ export const makeStore = (preloadedState?: Partial<RootState>) => {
     reducer: persistedReducer,
     // Adding the api middleware enables caching, invalidation, polling,
     // and other useful features of `rtk-query`.
-    middleware: getDefaultMiddleware => {
-      return getDefaultMiddleware()
-    },
+    middleware: getDefaultMiddleware =>
+      getDefaultMiddleware({
+        serializableCheck: {
+          ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+        },
+      }),
+
     preloadedState,
   })
   // configure listeners using the provided defaults

@@ -32,19 +32,19 @@ export const Form = forwardRef(
       cacheValueRef.current = value
     }, 1000)
 
-    useEffect(() => {
-      //defined onbeforeunload listener to cache the value when user accidently close the browser
-      window.onbeforeunload = function () {
-        if (cacheValueRef.current) {
-          cacheUnSubmitValues(cacheValueRef.current)
-        }
-        return true
-      }
+    // useEffect(() => {
+    //   //defined onbeforeunload listener to cache the value when user accidently close the browser
+    //   window.onbeforeunload = function () {
+    //     if (cacheValueRef.current) {
+    //       cacheUnSubmitValues(cacheValueRef.current)
+    //     }
+    //     return true
+    //   }
 
-      return () => {
-        window.onbeforeunload = null
-      }
-    }, [])
+    //   return () => {
+    //     window.onbeforeunload = null
+    //   }
+    // }, [])
 
     useEffect(() => {
       submitRef.current = handleSubmit((data: any) => {
@@ -69,6 +69,9 @@ export const Form = forwardRef(
 
     return (
       <form data-testid="dynamic-form">
+        {(!Array.isArray(fields) || fields.length === 0) && (
+          <div className="text-blue-400">Error Loading, Please try again</div>
+        )}
         <FormProvider {...formMethods}>
           {fields.map((d, i) => (
             <div key={d.fieldName}>

@@ -15,6 +15,7 @@ const Welcome = () => {
   const formRef = useRef<any>(null)
   const formFeilds = useAppSelector(selectFormFeilds)
   const wlcomeFeildsValues = useAppSelector(selectWelcomeFeildsValues)
+
   const navigate = useNavigate()
 
   const handleNextClick = (formRef: any) => {
@@ -33,7 +34,7 @@ const Welcome = () => {
       const formData = formRef.current.getValues()
       dispatch(setCurrenFormStep("child-grade"))
       dispatch(cacheWelcomeFormValue(formData))
-      navigate("/child-grade", { state: { formData } })
+      navigate("/child-grade")
       console.log("test")
     }
   }
