@@ -1,14 +1,14 @@
 import type { Action, ThunkAction } from "@reduxjs/toolkit"
 import { combineSlices, configureStore } from "@reduxjs/toolkit"
 import { setupListeners } from "@reduxjs/toolkit/query"
-import storage from "redux-persist/lib/storage"
+//import storage from "redux-persist/lib/storage"
 import { persistReducer, persistStore } from "redux-persist"
 import { checkoutSlice } from "../features/checkout/CheckoutSlice"
-
+import * as localForage from "localforage"
 
 const persistConfig = {
   key: "root",
-  storage,
+  storage: localForage,
 }
 
 // `combineSlices` automatically combines the reducers using
