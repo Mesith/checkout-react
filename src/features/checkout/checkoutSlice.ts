@@ -7,7 +7,7 @@ export interface CheckoutSliceState {
   welcomeFormValues: any
   childGradeFormValues: any
   packageFormValues: any
-  currentFormStep: null | "welcome" | "child-grade" | "packages"
+  currentFormStep: null | "welcome" | "child-grade" | "packages" 
 }
 
 const initialState: CheckoutSliceState = {

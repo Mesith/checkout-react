@@ -1,3 +1,4 @@
+import { useRef } from "react"
 import { Button } from "flowbite-react"
 import { useNavigate } from "react-router-dom"
 import { useAppDispatch, useAppSelector } from "../../app/hooks"
@@ -8,7 +9,6 @@ import {
   cacheWelcomeFormValue,
 } from "./CheckoutSlice"
 import { Form } from "../../componants/dynamicForm/Form"
-import { useRef } from "react"
 
 const Welcome = () => {
   const dispatch = useAppDispatch()
@@ -35,7 +35,6 @@ const Welcome = () => {
       dispatch(setCurrenFormStep("child-grade"))
       dispatch(cacheWelcomeFormValue(formData))
       navigate("/child-grade")
-      console.log("test")
     }
   }
 

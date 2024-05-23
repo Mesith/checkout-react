@@ -12,8 +12,9 @@ import {
   REGISTER,
   REHYDRATE,
 } from "redux-persist"
-import { checkoutSlice } from "../features/checkout/CheckoutSlice"
+
 import * as localForage from "localforage"
+import { checkoutSlice } from "../features/checkout/CheckoutSlice"
 
 const persistConfig = {
   key: "root",
