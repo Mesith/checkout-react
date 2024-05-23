@@ -1,8 +1,5 @@
 import {
-  BrowserRouter,
   createBrowserRouter,
-  Route,
-  Routes,
 } from "react-router-dom"
 import Welcome from "../features/checkout/Welcome"
 import ChildGrade from "../features/checkout/ChildGrade"

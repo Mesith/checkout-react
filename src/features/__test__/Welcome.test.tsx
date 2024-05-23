@@ -4,7 +4,7 @@ import { MemoryRouter } from "react-router-dom"
 import { screen } from "@testing-library/react"
 import { fields } from "../../data/form"
 
-test("Welcome component renders the Form componant", () => {
+test("welcome component renders the Form componant", () => {
   const { getByTestId } = renderWithProviders(
     <MemoryRouter>
       <Welcome />
@@ -15,7 +15,7 @@ test("Welcome component renders the Form componant", () => {
   expect(form).toBeInTheDocument()
 })
 
-test("Should render a form with all input fields based on store data", () => {
+test("should render a form with all input fields based on store data", () => {
   renderWithProviders(
     <MemoryRouter>
       <Welcome />
