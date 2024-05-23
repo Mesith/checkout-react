@@ -9,7 +9,8 @@ import {
   selectFormFeilds,
   setCurrenFormStep,
 } from "./CheckoutSlice"
-import { Form } from "../../componants/dynamicForm/Form"
+import DynamicForm from "../../componants/dynamicForm/DynamicForm"
+import { CHECKOUT_STEPS } from "../../router/router"
 
 const ChildGrade = () => {
   const formRef = useRef<any>(null)
@@ -23,7 +24,7 @@ const ChildGrade = () => {
   )
 
   const handleBackPress = () => {
-    dispatch(setCurrenFormStep("welcome"))
+    dispatch(setCurrenFormStep(CHECKOUT_STEPS.WELCOME))
     const formData = formRef.current.getValues()
     dispatch(cacheChildGradeFormValue(formData))
     navigate(-1)
@@ -37,8 +38,8 @@ const ChildGrade = () => {
     ) {
       const formData = formRef.current.getValues()
       dispatch(cacheChildGradeFormValue(formData))
-      dispatch(setCurrenFormStep("packages"))
-      navigate("/packages")
+      dispatch(setCurrenFormStep(CHECKOUT_STEPS.PACKAGES))
+      navigate(`/${CHECKOUT_STEPS.PACKAGES}`)
     } else {
       // Show error
     }
@@ -50,11 +51,11 @@ const ChildGrade = () => {
         <h2 className="mt-2 uppercase text-center text-4xl font-bold leading-9 tracking-tight text-gray-900">
           Confirm your child's grade level
         </h2>
-        <Form
+        <DynamicForm
           ref={formRef}
           fields={formFeilds?.childGradeFeilds}
           formValues={childGradeFeildsValues}
-          cacheUnSubmitValues={cacheSubmitValues}
+          onCacheUnsubmittedValues={cacheSubmitValues}
         />
       </div>
       <FooterNavitation

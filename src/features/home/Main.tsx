@@ -3,11 +3,11 @@ import { useAppDispatch } from "../../app/hooks"
 import HeaderNavBar from "../../componants/HeaderNavBar"
 import { setCurrenFormStep } from "../checkout/CheckoutSlice"
 import { useNavigate } from "react-router-dom"
+import { CHECKOUT_STEPS } from "../../router/router"
 
 const Main = () => {
   const dispatch = useAppDispatch()
   const navigate = useNavigate()
-
 
   return (
     <div>
@@ -23,8 +23,8 @@ const Main = () => {
             <div className="mt-10 flex items-center justify-center gap-x-6">
               <Button
                 onClick={() => {
-                  dispatch(setCurrenFormStep("welcome"))
-                  navigate("/welcome")
+                  dispatch(setCurrenFormStep(CHECKOUT_STEPS.WELCOME))
+                  navigate(`/${CHECKOUT_STEPS.WELCOME}`)
                 }}
                 color="blue"
                 className="flex w-[30%] justify-center rounded-md bg-gray-900 px-3 py-1 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-gray-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"

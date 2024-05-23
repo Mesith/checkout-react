@@ -8,7 +8,8 @@ import {
   setCurrenFormStep,
   cacheWelcomeFormValue,
 } from "./CheckoutSlice"
-import { Form } from "../../componants/dynamicForm/Form"
+import DynamicForm from "../../componants/dynamicForm/DynamicForm"
+import { CHECKOUT_STEPS } from "../../router/router"
 
 const Welcome = () => {
   const dispatch = useAppDispatch()
@@ -32,9 +33,9 @@ const Welcome = () => {
 
     if (formRef.current.isValid()) {
       const formData = formRef.current.getValues()
-      dispatch(setCurrenFormStep("child-grade"))
+      dispatch(setCurrenFormStep(CHECKOUT_STEPS.CHILD_GRADE))
       dispatch(cacheWelcomeFormValue(formData))
-      navigate("/child-grade")
+      navigate(`/${CHECKOUT_STEPS.CHILD_GRADE}`)
     }
   }
 
@@ -49,11 +50,11 @@ const Welcome = () => {
         </p>
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
           <div className="py-6">
-            <Form
+            <DynamicForm
               ref={formRef}
               fields={formFeilds?.welcomeFeilds}
               formValues={wlcomeFeildsValues}
-              cacheUnSubmitValues={(formData: any) =>
+              onCacheUnsubmittedValues={(formData: any) =>
                 dispatch(cacheWelcomeFormValue(formData))
               }
             />

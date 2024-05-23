@@ -1,6 +1,6 @@
 import { render, fireEvent } from "@testing-library/react"
 import FooterNavigation from "../FooterNavitation"
-test("Clicking Back button calls onBackPress prop", () => {
+it("clicking Back button calls onBackPress prop", () => {
   const mockOnBackPress = vi.fn()
   const mockOnNextPress = vi.fn()
 
@@ -17,7 +17,7 @@ test("Clicking Back button calls onBackPress prop", () => {
   expect(mockOnBackPress).toHaveBeenCalledTimes(1)
 })
 
-test("Clicking Next button calls onNextPress prop", () => {
+it("clicking Next button calls onNextPress prop", () => {
   const mockOnBackPress = vi.fn()
   const mockOnNextPress = vi.fn()
 

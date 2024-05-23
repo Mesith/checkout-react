@@ -9,7 +9,8 @@ import {
   setCurrenFormStep,
 } from "./CheckoutSlice"
 import { useAppDispatch, useAppSelector } from "../../app/hooks"
-import { Form } from "../../componants/dynamicForm/Form"
+import DynamicForm from "../../componants/dynamicForm/DynamicForm"
+import { CHECKOUT_STEPS } from "../../router/router"
 
 const Packages = () => {
   const formRef = useRef<any>(null)
@@ -27,17 +28,18 @@ const Packages = () => {
           </h2>
         </div>
 
-        <Form
+        <DynamicForm
           ref={formRef}
           fields={formFeilds?.packageFeilds}
           formValues={packageFeildsValues}
-          cacheUnSubmitValues={(formData: any) => {
+          onCacheUnsubmittedValues={(formData: any) => {
             dispatch(cachePackageFormValue(formData))
           }}
         />
+
         <FooterNavitation
           onBackPress={() => {
-            dispatch(setCurrenFormStep("child-grade"))
+            dispatch(setCurrenFormStep(CHECKOUT_STEPS.CHILD_GRADE))
             navigate(-1)
           }}
           onNextPress={() => {
@@ -48,7 +50,7 @@ const Packages = () => {
                 const formData = formRef.current.getValues()
                 dispatch(cachePackageFormValue(formData))
                 dispatch(resetChache())
-                navigate("/payment")
+                navigate(`/${CHECKOUT_STEPS.PAYMENT}`, { replace: true })
               }
             }
           }}

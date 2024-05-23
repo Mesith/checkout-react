@@ -1,11 +1,10 @@
-
 import { renderWithProviders } from "../../utils/test-utils"
 import { MemoryRouter } from "react-router-dom"
 import { screen } from "@testing-library/react"
 import { fields } from "../../data/form"
 import ChildGrade from "../checkout/ChildGrade"
 
-test("childGrade component renders the Form componant", () => {
+it("childGrade component renders the Form componant", () => {
   const { getByTestId } = renderWithProviders(
     <MemoryRouter>
       <ChildGrade />
@@ -16,7 +15,7 @@ test("childGrade component renders the Form componant", () => {
   expect(form).toBeInTheDocument()
 })
 
-test("should render a form with all input fields based on store data", () => {
+it("should render a form with all input fields based on store data", () => {
   renderWithProviders(
     <MemoryRouter>
       <ChildGrade />

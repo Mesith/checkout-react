@@ -4,7 +4,7 @@ import { vi } from "vitest"
 
 describe("CheckBox component", () => {
   it("Should render the label and checkbox correctly", () => {
-    const { getByText, getByLabelText } = render(
+    const { getByText } = render(
       <CheckBox
         id="test-checkbox"
         label="Test Label"
