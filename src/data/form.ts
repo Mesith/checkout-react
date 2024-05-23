@@ -2,17 +2,17 @@ import type { DynamicFeilds } from "../componants/dynamicForm/DynamicControleTyp
 
 export const fields: DynamicFeilds = {
   welcomeFeilds: [
-    {
+    { 
       fieldName: "email",
-      inputType: "text",
+      inputType: "email",
       label: "Email Address",
       defaultValue: "",
       config: {
         required: "Email Required",
-        // pattern: {
-        //   value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-        //   message: "Please enter a valid email address",
-        // },
+        pattern: {
+          value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+          message: "Please enter a valid email address",
+        },
       },
     },
     {

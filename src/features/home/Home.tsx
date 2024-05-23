@@ -7,6 +7,8 @@ import { useLocationEffect } from "../../hooks/useLocation"
 
 const Home = () => {
   const dispatch = useAppDispatch()
+
+  // updating state of current step. later can resume if user leave
   useLocationEffect((location: any) => {
     dispatch(setCurrenFormStep(location.pathname))
   })

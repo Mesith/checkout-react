@@ -3,19 +3,20 @@ import { Button } from "flowbite-react"
 import { useNavigate } from "react-router-dom"
 import { useAppDispatch, useAppSelector } from "../../app/hooks"
 import {
-  selectFormFeilds,
   selectWelcomeFeildsValues,
   setCurrenFormStep,
   cacheWelcomeFormValue,
 } from "./CheckoutSlice"
 import DynamicForm from "../../componants/dynamicForm/DynamicForm"
 import { CHECKOUT_STEPS } from "../../router/router"
+import { useFeatureValue } from "@growthbook/growthbook-react"
 
 const Welcome = () => {
   const dispatch = useAppDispatch()
   const formRef = useRef<any>(null)
-  const formFeilds = useAppSelector(selectFormFeilds)
   const wlcomeFeildsValues = useAppSelector(selectWelcomeFeildsValues)
+  const formFeatureValues: any = useFeatureValue("form-feature", {})
+  console.log("JSON", formFeatureValues)
 
   const navigate = useNavigate()
 
@@ -52,7 +53,7 @@ const Welcome = () => {
           <div className="py-6">
             <DynamicForm
               ref={formRef}
-              fields={formFeilds?.welcomeFeilds}
+              fields={formFeatureValues?.welcomeFeilds}
               formValues={wlcomeFeildsValues}
               onCacheUnsubmittedValues={(formData: any) =>
                 dispatch(cacheWelcomeFormValue(formData))

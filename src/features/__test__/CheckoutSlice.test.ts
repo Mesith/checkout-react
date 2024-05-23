@@ -1,6 +1,6 @@
 import { describe, beforeEach, it, expect } from "vitest"
 import type { AppStore } from "../../app/store"
-import { makeStore, store } from "../../app/store"
+import { makeStore } from "../../app/store"
 import { fields } from "../../data/form"
 import type { CheckoutSliceState } from "../checkout/CheckoutSlice"
 import {

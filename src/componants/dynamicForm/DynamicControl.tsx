@@ -22,6 +22,7 @@ export const DynamicControl = React.memo(
   }: DynamicFieldData & { control: any }) => {
     switch (inputType) {
       case "number":
+      case "email":
       case "text":
         return (
           <div>
@@ -30,7 +31,13 @@ export const DynamicControl = React.memo(
               name={fieldName}
               rules={{
                 required: config?.required,
-                pattern: config?.pattern,
+                pattern: {
+                  value:
+                    inputType === "email"
+                      ? /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i
+                      : (config?.pattern as any),
+                  message: "Please enter a valid email address",
+                },
               }}
               render={({ field: { onChange, onBlur, value, ref } }) => (
                 <div>

@@ -4,6 +4,7 @@ import type { PackageInputOptionItem } from "../PackagesInput"
 
 export type ControlType =
   | "text"
+  | "email"
   | "select"
   | "number"
   | "checkbox"
