@@ -32,6 +32,7 @@ const InputText = React.memo(
             type={type}
             data-testid={fieldName}
             sizing="sm"
+            min={0}
             onChange={(e: any) => onChange(e.target.value)}
             {...rest}
           />

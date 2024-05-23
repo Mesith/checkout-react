@@ -1,13 +1,13 @@
 import { Controller } from "react-hook-form"
 import type { DynamicFieldData, SelectOption } from "./DynamicControleTypes"
 import SelectInput from "../SelectInput"
-import CheckBox from "../CheckBox"
-import type { ChildGradeInputOptionItem } from "../ChildGradeInput"
-import ChildGradeInput from "../ChildGradeInput"
-import type { PackageInputOptionItem } from "../PackagesInput"
-import PackagesInput from "../PackagesInput"
 import React from "react"
 import InputText from "../common/InputText"
+import CheckBox from "../common/CheckBox"
+import type { ChildGradeInputOptionItem } from "../childGrade/ChildGradeInput"
+import ChildGradeInput from "../childGrade/ChildGradeInput"
+import type { PackageInputOptionItem } from "../packages/PackagesInput"
+import PackagesInput from "../packages/PackagesInput"
 // ** Dynamic Field Rendering based on Input Type **
 export const DynamicControl = React.memo(
   ({
@@ -84,7 +84,7 @@ export const DynamicControl = React.memo(
           />
         )
       }
-      case "checkbox":
+      case "check-box":
         return (
           <Controller
             control={control}
@@ -109,7 +109,7 @@ export const DynamicControl = React.memo(
             )}
           />
         )
-      case "childgrade":
+      case "child-grade":
         return (
           <Controller
             control={control}

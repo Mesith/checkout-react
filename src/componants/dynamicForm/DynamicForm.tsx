@@ -36,6 +36,8 @@ const DynamicForm = forwardRef<FormRef, FormProps>(
       control,
     } = formMethods
 
+    console.log("errors", errors)
+
     useEffect(() => {
       submitRef.current = handleSubmit(() => {
         console.log("Form Submit")
@@ -63,7 +65,9 @@ const DynamicForm = forwardRef<FormRef, FormProps>(
     return (
       <form data-testid="dynamic-form">
         {!fields?.length && (
-          <div className="text-blue-400">Error Loading, Please try again</div>
+          <div className="text-red-400 w-full items-center text-center mt-10">
+            Error Loading, Please try again
+          </div>
         )}
         {fields?.length > 0 && (
           <FormProvider {...formMethods}>

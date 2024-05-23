@@ -1,8 +1,37 @@
 import { renderWithProviders } from "../../utils/test-utils"
 import { MemoryRouter } from "react-router-dom"
 import { screen } from "@testing-library/react"
-import { fields } from "../../data/form"
 import ChildGrade from "../checkout/ChildGrade"
+import { GrowthBookProvider } from "@growthbook/growthbook-react"
+import { growthbook } from "../../growthbook/growthbook"
+
+const childGradeFeilds = [
+  {
+    fieldName: "childGrade",
+    inputType: "child-grade",
+    label: "Child Grade",
+    defaultValue: "",
+    config: {
+      required: "Please Select Grade Level",
+    },
+    options: [
+      { id: "1", name: "Euka Junior", description: "test" },
+      { id: "2", name: "Euka Middle", description: "test" },
+      { id: "3", name: "Euka Senior", description: "test" },
+      { id: "4", name: "Euka Master", description: "test" },
+    ],
+  },
+]
+
+vi.mock("@growthbook/growthbook-react", async () => {
+  const actual = await vi.importActual("@growthbook/growthbook-react")
+  return {
+    ...actual,
+    useFeatureValue: () => ({
+      childGradeFeilds: childGradeFeilds,
+    }),
+  }
+})
 
 it("childGrade component renders the Form componant", () => {
   const { getByTestId } = renderWithProviders(
@@ -17,13 +46,13 @@ it("childGrade component renders the Form componant", () => {
 
 it("should render a form with all input fields based on store data", () => {
   renderWithProviders(
-    <MemoryRouter>
-      <ChildGrade />
-    </MemoryRouter>,
+    <GrowthBookProvider growthbook={growthbook}>
+      <MemoryRouter>
+        <ChildGrade />
+      </MemoryRouter>
+    </GrowthBookProvider>,
   )
 
-  for (const field of fields.childGradeFeilds) {
-    const fieldElement = screen.getByLabelText(field.label)
-    expect(fieldElement).toBeInTheDocument()
-  }
+  const gradeLevealItems = screen.getAllByTestId("grade-item")
+  expect(gradeLevealItems).toHaveLength(childGradeFeilds[0].options.length)
 })

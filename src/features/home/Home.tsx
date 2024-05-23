@@ -4,6 +4,8 @@ import FormStepLinkNavigator from "../../router/FormStepLinkNavigator"
 import { setCurrenFormStep } from "../checkout/CheckoutSlice"
 import { useAppDispatch } from "../../app/hooks"
 import { useLocationEffect } from "../../hooks/useLocation"
+import ErrorBoundary from "../../componants/errors/ErrorBoundary"
+import { ErrorView } from "../../componants/errors/ErrorView"
 
 const Home = () => {
   const dispatch = useAppDispatch()
@@ -17,7 +19,9 @@ const Home = () => {
     <div>
       <HeaderNavBar />
       <FormStepLinkNavigator>
-        <Outlet />
+        <ErrorBoundary fallback={<ErrorView />}>
+          <Outlet />
+        </ErrorBoundary>
       </FormStepLinkNavigator>
     </div>
   )

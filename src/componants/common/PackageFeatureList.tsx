@@ -1,5 +1,5 @@
 import React from "react"
-import { PackageFeatureItem } from "./PackageFeatureItem"
+import { PackageFeatureItem } from "../packages/PackageFeatureItem"
 
 export const PackageFeatureList = React.memo(
   ({ features }: { features: string[] }) => {

@@ -7,8 +7,8 @@ export type ControlType =
   | "email"
   | "select"
   | "number"
-  | "checkbox"
-  | "childgrade"
+  | "check-box"
+  | "child-grade"
   | "package"
 
 export interface SelectOption {

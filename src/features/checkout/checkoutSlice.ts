@@ -1,9 +1,7 @@
 import type { PayloadAction } from "@reduxjs/toolkit"
 import { createAppSlice } from "../../app/createAppSlice"
-import { fields } from "../../data/form"
 
 export interface CheckoutSliceState {
-  formFeilds: any
   welcomeFormValues: any
   childGradeFormValues: any
   packageFormValues: any
@@ -11,7 +9,6 @@ export interface CheckoutSliceState {
 }
 
 const initialState: CheckoutSliceState = {
-  formFeilds: fields,
   welcomeFormValues: {},
   childGradeFormValues: {},
   packageFormValues: {},
@@ -54,7 +51,6 @@ export const checkoutSlice = createAppSlice({
   }),
 
   selectors: {
-    selectFormFeilds: checkout => checkout.formFeilds,
     selectWelcomeFeildsValues: checkout => checkout.welcomeFormValues,
     selectChildGradeFeildsValues: checkout => checkout.childGradeFormValues,
     selectPackageFeildsValues: checkout => checkout.packageFormValues,
@@ -71,7 +67,6 @@ export const {
 } = checkoutSlice.actions
 
 export const {
-  selectFormFeilds,
   selectWelcomeFeildsValues,
   selectChildGradeFeildsValues,
   selectPackageFeildsValues,

@@ -1,7 +1,6 @@
 import { describe, beforeEach, it, expect } from "vitest"
 import type { AppStore } from "../../app/store"
 import { makeStore } from "../../app/store"
-import { fields } from "../../data/form"
 import type { CheckoutSliceState } from "../checkout/CheckoutSlice"
 import {
   checkoutSlice,
@@ -11,7 +10,6 @@ import {
   resetChache,
   selectChildGradeFeildsValues,
   selectCurrentFormStep,
-  selectFormFeilds,
   selectPackageFeildsValues,
   selectWelcomeFeildsValues,
   setCurrenFormStep,
@@ -24,7 +22,6 @@ interface LocalTestContext {
 describe<LocalTestContext>("checkout reducer", () => {
   beforeEach<LocalTestContext>(context => {
     const initialState: CheckoutSliceState = {
-      formFeilds: fields,
       welcomeFormValues: {},
       childGradeFormValues: {},
       packageFormValues: {},
@@ -39,17 +36,12 @@ describe<LocalTestContext>("checkout reducer", () => {
   it("should handle initial state", () => {
     expect(checkoutSlice.reducer(undefined, { type: "unknown" })).toStrictEqual(
       {
-        formFeilds: fields,
         welcomeFormValues: {},
         childGradeFormValues: {},
         packageFormValues: {},
         currentFormStep: null,
       },
     )
-  })
-
-  it("should have initial form fields", ({ store }: any) => {
-    expect(selectFormFeilds(store.getState())).toBe(fields)
   })
 
   // Form Value Caching Tests

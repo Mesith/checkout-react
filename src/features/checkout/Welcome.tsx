@@ -16,7 +16,7 @@ const Welcome = () => {
   const formRef = useRef<any>(null)
   const wlcomeFeildsValues = useAppSelector(selectWelcomeFeildsValues)
   const formFeatureValues: any = useFeatureValue("form-feature", {})
-  console.log("JSON", formFeatureValues)
+  console.log("VVVVVV", formFeatureValues)
 
   const navigate = useNavigate()
 

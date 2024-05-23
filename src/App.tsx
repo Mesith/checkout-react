@@ -6,6 +6,8 @@ import { router } from "./router/router"
 import { useEffect } from "react"
 import { growthbook } from "./growthbook/growthbook"
 import { GrowthBookProvider } from "@growthbook/growthbook-react"
+import ErrorBoundary from "./componants/errors/ErrorBoundary"
+import { ErrorView } from "./componants/errors/ErrorView"
 
 const App = () => {
   useEffect(() => {

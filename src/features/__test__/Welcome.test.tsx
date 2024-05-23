@@ -42,7 +42,7 @@ test("welcome component renders the Form componant", () => {
   const { getByTestId } = renderWithProviders(
     <MemoryRouter>
       <Welcome />
-    </MemoryRouter>,
+    </MemoryRouter>
   )
 
   const form = getByTestId("dynamic-form")
@@ -55,8 +55,7 @@ test("should render a form with all input fields based on A/B data", () => {
       <MemoryRouter>
         <Welcome />
       </MemoryRouter>
-      ,
-    </GrowthBookProvider>,
+    </GrowthBookProvider>
   )
 
   for (const field of welcomeFeilds) {

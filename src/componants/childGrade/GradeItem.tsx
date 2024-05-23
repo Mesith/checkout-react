@@ -17,7 +17,7 @@ const GradeItem = React.memo(
         <div
           className="mx-auto max-w-7xl px-6 lg:px-8 "
           onClick={() => onClick(id)}
-          data-testid={`grade-item`}
+          data-testid={"grade-item"}
         >
           <div
             data-testid={id}

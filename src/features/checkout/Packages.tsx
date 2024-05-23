@@ -1,23 +1,23 @@
 import { useRef } from "react"
-import FooterNavitation from "../../componants/FooterNavitation"
 import { useNavigate } from "react-router-dom"
 import {
   cachePackageFormValue,
   resetChache,
-  selectFormFeilds,
   selectPackageFeildsValues,
   setCurrenFormStep,
 } from "./CheckoutSlice"
 import { useAppDispatch, useAppSelector } from "../../app/hooks"
 import DynamicForm from "../../componants/dynamicForm/DynamicForm"
 import { CHECKOUT_STEPS } from "../../router/router"
+import { useFeatureValue } from "@growthbook/growthbook-react"
+import FooterNavitation from "../../componants/navigation/FooterNavitation"
 
 const Packages = () => {
   const formRef = useRef<any>(null)
   const navigate = useNavigate()
 
   const dispatch = useAppDispatch()
-  const formFeilds = useAppSelector(selectFormFeilds)
+  const formFeatureValues: any = useFeatureValue("form-feature", {})
   const packageFeildsValues = useAppSelector(selectPackageFeildsValues)
   return (
     <section className="bg-white dark:bg-gray-900">
@@ -30,7 +30,7 @@ const Packages = () => {
 
         <DynamicForm
           ref={formRef}
-          fields={formFeilds?.packageFeilds}
+          fields={formFeatureValues?.packageFeilds}
           formValues={packageFeildsValues}
           onCacheUnsubmittedValues={(formData: any) => {
             dispatch(cachePackageFormValue(formData))

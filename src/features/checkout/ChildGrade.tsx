@@ -1,23 +1,23 @@
 import { useMemo, useRef } from "react"
-import FooterNavitation from "../../componants/FooterNavitation"
 import { useNavigate } from "react-router-dom"
 
 import { useAppDispatch, useAppSelector } from "../../app/hooks"
 import {
   cacheChildGradeFormValue,
   selectChildGradeFeildsValues,
-  selectFormFeilds,
   setCurrenFormStep,
 } from "./CheckoutSlice"
 import DynamicForm from "../../componants/dynamicForm/DynamicForm"
 import { CHECKOUT_STEPS } from "../../router/router"
+import { useFeatureValue } from "@growthbook/growthbook-react"
+import FooterNavitation from "../../componants/navigation/FooterNavitation"
 
 const ChildGrade = () => {
   const formRef = useRef<any>(null)
   const navigate = useNavigate()
   const dispatch = useAppDispatch()
-  const formFeilds = useAppSelector(selectFormFeilds)
   const childGradeFeildsValues = useAppSelector(selectChildGradeFeildsValues)
+  const formFeatureValues: any = useFeatureValue("form-feature", {})
   const cacheSubmitValues = useMemo(
     () => (formData: any) => dispatch(cacheChildGradeFormValue(formData)),
     [dispatch],
@@ -32,10 +32,16 @@ const ChildGrade = () => {
 
   const handleNextPress = () => {
     if (
-      formRef.current &&
-      formRef.current.getValues &&
-      formRef.current.isValid()
+      !formRef ||
+      !formRef.current ||
+      !formRef.current.getValues ||
+      !formRef.current.isValid
     ) {
+      return
+    }
+
+    formRef.current.submit()
+    if (formRef.current.isValid()) {
       const formData = formRef.current.getValues()
       dispatch(cacheChildGradeFormValue(formData))
       dispatch(setCurrenFormStep(CHECKOUT_STEPS.PACKAGES))
@@ -53,7 +59,7 @@ const ChildGrade = () => {
         </h2>
         <DynamicForm
           ref={formRef}
-          fields={formFeilds?.childGradeFeilds}
+          fields={formFeatureValues?.childGradeFeilds}
           formValues={childGradeFeildsValues}
           onCacheUnsubmittedValues={cacheSubmitValues}
         />
