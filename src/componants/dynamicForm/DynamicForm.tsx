@@ -36,11 +36,10 @@ const DynamicForm = forwardRef<FormRef, FormProps>(
       control,
     } = formMethods
 
-    console.log("errors", errors)
 
     useEffect(() => {
       submitRef.current = handleSubmit(() => {
-        console.log("Form Submit")
+      
       })
       const subscription = watch(values => (cacheValueRef.current = values))
       return () => {

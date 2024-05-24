@@ -15,7 +15,6 @@ const FormStepLinkNavigator = React.memo(({ children }: any) => {
   const location = useLocation()
   const currentStep = useAppSelector(selectCurrentFormStep)
   const previousLocation = usePreviousLocation()
-  console.log("previousLocation", previousLocation)
 
   if (
     !previousLocation &&

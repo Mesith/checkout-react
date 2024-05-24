@@ -5,19 +5,31 @@ export const useCacheUnsubmittedValues = (
 ) => {
   const cacheValueRef = useRef<any>(null)
 
-  useEffect(() => {
-    const handleBeforeUnload = () => {
-      if (cacheValueRef.current) {
-        onCacheUnsubmittedValues(cacheValueRef.current)
-      }
+  const cacheUnSavedValues = () => {
+    if (cacheValueRef.current) {
+      onCacheUnsubmittedValues(cacheValueRef.current)
     }
+  }
 
-    window.addEventListener("beforeunload", handleBeforeUnload)
+  useEffect(() => {
+    // handl page reload, cache unsaved user inputs
+    window.addEventListener("beforeunload", cacheUnSavedValues)
 
     return () => {
-      window.removeEventListener("beforeunload", handleBeforeUnload)
+      window.removeEventListener("beforeunload", cacheUnSavedValues)
     }
-  }, [onCacheUnsubmittedValues])
+  }, [])
+
+  useEffect(() => {
+    // Handle back navigate, cache unsaved user inputs
+    window.addEventListener("popstate", () => {
+      cacheUnSavedValues()
+    })
+
+    return () => {
+      window.removeEventListener("popstate", cacheUnSavedValues)
+    }
+  }, [])
 
   return cacheValueRef
 }
