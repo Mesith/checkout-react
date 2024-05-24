@@ -75,9 +75,10 @@ This command will trigger the test runner, which will run all the unit tests in 
 
 
 ## A/B Testing
-    * Integrated Growthbook, an open-source A/B testing tool, allowing us to conduct marketing experiments by altering feature variants.
-    * Form metadata is now acquired as JSON from the Growthbook API, enabling dynamic form structure and A/B testing on each onboarding step. (Credentials removed for security)
-    * By modifying the form-feature content JSON, we can introduce new form fields and conduct A/B tests on each onboarding segment, offering greater product flexibility and marketing testing power.
+Integrated Growthbook, an open-source A/B testing tool, allowing us to conduct marketing experiments by altering feature variants.
+Form metadata is now acquired as JSON from the Growthbook API, enabling dynamic form structure and A/B testing on each onboarding step.
+
+By modifying the form-feature content JSON, we can introduce new form fields and conduct A/B tests on each onboarding segment, offering greater product flexibility and marketing testing power.
 Below is Growth book credentials to Test the functionality
 
 	URL : https://app.growthbook.io/  
