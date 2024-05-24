@@ -1,6 +1,7 @@
 import type { RegisterOptions } from "react-hook-form"
-import type { ChildGradeInputOptionItem } from "../ChildGradeInput"
-import type { PackageInputOptionItem } from "../PackagesInput"
+
+import type { ChildGradeInputOptionItem } from "../childGrade/ChildGradeInput"
+import type { PackageInputOptionItem } from "../packages/PackagesInput"
 
 export type ControlType =
   | "text"
