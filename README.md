@@ -19,7 +19,11 @@ Empower your marketing team to tailor each checkout step according to your brand
 
 
 
-https://github.com/Mesith/checkout-react/assets/5463037/76586b8d-22fb-488f-91b8-f5d2caf902d4
+
+https://github.com/Mesith/checkout-react/assets/5463037/52299a87-bf58-416c-af44-f8c30891af3e
+
+
+
 
 
 
@@ -53,7 +57,9 @@ Launch the app on an `http://localhost:5173`
 - Responsive Design: **Tailwind CSS** (https://tailwindcss.com/) - for rapid and utility-first CSS development.
 - Unit Testing: **Vitest** (https://vitest.dev/) with React Testing Library (https://testing-library.com/docs/react-testing-library/intro/) - for ensuring code quality and maintainability.
 - Routing: **React Router DOM** (https://reacttraining.com/react-router) - for smooth navigation between different parts of your application.
-- Dynamic Forms: **React-Hook-Forms** 
+- Dynamic Forms: **React-Hook-Forms**
+- Storage engine : localForge (IndexDB)
+- test Report : VI Test UI
 ## Unit Tests
 The project includes a comprehensive set of unit tests, covering various aspects of the codebase. These tests can be found in the `__test__` folder under some packages, which includes unit tests.
 
