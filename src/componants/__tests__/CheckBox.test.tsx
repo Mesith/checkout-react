@@ -1,6 +1,6 @@
 import { render, fireEvent } from "@testing-library/react"
-import CheckBox from "../CheckBox"
 import { vi } from "vitest"
+import CheckBox from "../common/CheckBox"
 
 describe("CheckBox component", () => {
   it("Should render the label and checkbox correctly", () => {

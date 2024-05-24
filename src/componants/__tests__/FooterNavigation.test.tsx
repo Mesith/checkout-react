@@ -1,5 +1,9 @@
+
+import React from "react"
 import { render, fireEvent } from "@testing-library/react"
-import FooterNavigation from "../FooterNavitation"
+import { vi } from "vitest"
+import FooterNavigation from "../navigation/FooterNavitation"
+
 it("clicking Back button calls onBackPress prop", () => {
   const mockOnBackPress = vi.fn()
   const mockOnNextPress = vi.fn()

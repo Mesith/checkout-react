@@ -1,5 +1,5 @@
 import { render } from "@testing-library/react"
-import PackagesInput from "../PackagesInput"
+import PackagesInput from "../packages/PackagesInput"
 
 describe("PackagesInput component", () => {
   const options = [

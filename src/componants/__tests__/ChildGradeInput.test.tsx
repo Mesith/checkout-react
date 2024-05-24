@@ -1,6 +1,6 @@
 import { render, fireEvent } from "@testing-library/react"
-import ChildGradeInput from "../ChildGradeInput"
 import { vi } from "vitest"
+import ChildGradeInput from "../childGrade/ChildGradeInput"
 
 describe("ChildGradeInput component", () => {
   const options = [
